@@ -1,4 +1,4 @@
-package math
+package calc
 
 import (
 	"testing"
@@ -7,15 +7,17 @@ import (
 // test sum
 func TestSum(t *testing.T) {
 
-	result, _ := Sum(1, 2, 3, 4, 6)
-	if result != 16 {
-		t.Errorf("result must be 16")
+	c := Calc{1, 2}
+	result, _ := c.sum()
+	if result != 3 {
+		t.Errorf("result must be 3")
 	}
 }
 
 // test divide
 func TestDivide(t *testing.T) {
-	result, _ := Divide(1, 2)
+	c := Calc{1, 2}
+	result, _ := c.divide()
 	if result != 0.5 {
 		t.Errorf("result must be 0.5")
 	}
@@ -23,7 +25,9 @@ func TestDivide(t *testing.T) {
 
 // test divide
 func TestDivideByZero(t *testing.T) {
-	_, err := Divide(1, 0)
+	c := Calc{1, 0}
+
+	_, err := c.divide()
 	if err == nil {
 		t.Errorf("cannot be devided by zero")
 	}
@@ -31,17 +35,18 @@ func TestDivideByZero(t *testing.T) {
 
 // test multiply
 func TestMultiply(t *testing.T) {
-	result, _ := Multiply(1, 2, 3, 4, 5, 6)
-	if result != 720 {
-		t.Errorf("result must be 720")
+	c := Calc{1, 2}
+	result, _ := c.multiply()
+	if result != 2 {
+		t.Errorf("result must be 2")
 	}
 }
 
 
 // test substract
 func TestSubtract(t *testing.T) {
-
-	result, _ := Subtract(1, 2)
+	c := Calc{1, 2}
+	result, _ := c.subtract()
 	if result != -1 {
 		t.Errorf("result must be -1")
 	}

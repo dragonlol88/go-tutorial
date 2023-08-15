@@ -9,8 +9,6 @@ import (
 )
 
 
-
-
 var (
 	// rootCmd represents the base command when called without any sub-commands
 	rootCmd = &cobra.Command{
