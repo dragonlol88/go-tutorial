@@ -8,7 +8,7 @@ import (
 func TestSum(t *testing.T) {
 
 	c := Calc{1, 2}
-	result, _ := c.sum()
+	result, _ := sum(&c)
 	if result != 3 {
 		t.Errorf("result must be 3")
 	}
@@ -17,7 +17,7 @@ func TestSum(t *testing.T) {
 // test divide
 func TestDivide(t *testing.T) {
 	c := Calc{1, 2}
-	result, _ := c.divide()
+	result, _ := divide(&c)
 	if result != 0.5 {
 		t.Errorf("result must be 0.5")
 	}
@@ -27,7 +27,7 @@ func TestDivide(t *testing.T) {
 func TestDivideByZero(t *testing.T) {
 	c := Calc{1, 0}
 
-	_, err := c.divide()
+	_, err := divide(&c)
 	if err == nil {
 		t.Errorf("cannot be devided by zero")
 	}
@@ -36,7 +36,7 @@ func TestDivideByZero(t *testing.T) {
 // test multiply
 func TestMultiply(t *testing.T) {
 	c := Calc{1, 2}
-	result, _ := c.multiply()
+	result, _ := multiply(&c)
 	if result != 2 {
 		t.Errorf("result must be 2")
 	}
@@ -46,7 +46,7 @@ func TestMultiply(t *testing.T) {
 // test substract
 func TestSubtract(t *testing.T) {
 	c := Calc{1, 2}
-	result, _ := c.subtract()
+	result, _ := subtract(&c)
 	if result != -1 {
 		t.Errorf("result must be -1")
 	}

@@ -1,8 +1,6 @@
 package main
 
-import (
-	"go-tutorial/cmd"
-)
+import "go-tutorial/cmd"
 
 func main() {
 	cmd.Execute()
