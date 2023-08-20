@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/go-tutorial/tutorial/calc"
 	"github.com/spf13/cobra"
-	"go-tutorial/tutorial/calc"
 )
 
 

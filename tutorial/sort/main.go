@@ -8,7 +8,14 @@ import (
 )
 
 var (
-	DEAFAULT = []string{"quick", "bubble", "heap", "gnome", "merge", "tree"}
+	DEFAULT = []string{
+		"quick",
+		"bubble",
+		"heap",
+		"gnome",
+		"merge",
+		"tree",
+	}
 )
 
 const (

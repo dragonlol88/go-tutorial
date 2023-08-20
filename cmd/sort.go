@@ -3,28 +3,31 @@ package cmd
 import (
 	"strings"
 
+	"github.com/go-tutorial/tutorial/sort"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-
-	"go-tutorial/tutorial/sort"
-
 )
 
 
 var (
 	sortCommand = &cobra.Command{
 		Use: "sort",
-		Short :`Calculation cmd of two number`,
-		Long  : `Calculation that performs arithmetic operations of two numbers.`,
+		Short :`Compare sort algorithms`,
+		Long  : `Compare sort algorithms, 
+					quick 
+					bubble 
+					heap
+					gnome 
+					merge 
+					tree`,
 		Run   : func(cmd *cobra.Command, args []string) {
-
 			var sortItems []string
 
 			size := viper.GetInt("sort-size")
 			kind := viper.GetString("sort-kind")
 
 			if kind == "" {
-				sortItems = sort.DEAFAULT
+				sortItems = sort.DEFAULT
 			} else {
 				sortItems = strings.Split(kind, ",")
 			}

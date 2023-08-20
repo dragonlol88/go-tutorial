@@ -182,7 +182,7 @@ func insert(root *node, val int) *node {
 }
 
 // inorder traversal algorithm
-// Copies the elements of the bst to the array in sorted order
+// Copies the elements of the bst to the array in sorted db
 func inorderCopy(n *node, array []int, index *int) {
 	if n != nil {
 		inorderCopy(n.left, array, index)
@@ -198,6 +198,6 @@ func _treeSort(array []int, tree *btree) {
 		tree.root = insert(tree.root, element)
 	}
 	index := 0
-	// perform inorder traversal to get the elements in sorted order
+	// perform inorder traversal to get the elements in sorted db
 	inorderCopy(tree.root, array, &index)
 }
