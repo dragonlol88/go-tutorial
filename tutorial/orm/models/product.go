@@ -1,12 +1,12 @@
-package models
+package orm
 
 import "time"
 
-
-type User struct {
+type Product struct {
 	ID 		  uint 		`gorm:"primaryKey" json:"id"`
 	Name 	  string	`gorm:"index" json:"name"`
-	Orders []*Order		`json:"orders"`
+	Price	  float32	`gorm:"type:decimal(9,2)" json:"price"`
+	Code 	  string	`gorm:"unique;not null" json:"code,omitempty"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }

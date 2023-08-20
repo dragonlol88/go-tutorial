@@ -1,4 +1,4 @@
-package main
+package orm
 
 import (
 	"fmt"
@@ -28,6 +28,8 @@ var (
 		return b.String()
 	}
 
+	option engineOption
+
 )
 
 
@@ -46,24 +48,29 @@ type engineFactory interface {
 	getName() string
 }
 
+type (
+	sqlLightEngineFactory struct {
+		engineOption
+	}
 
-type sqlLightEngineFactory struct {
-	engineOption
-}
+	mysqlEngineFactory struct {
+		engineOption
+	}
+
+	postgresEngineFactory struct {
+		engineOption
+	}
+)
+
 
 func (e sqlLightEngineFactory) getName() string {
 	return "sqlite"
 }
 
 func (e sqlLightEngineFactory) create(option *engineOption) (*gorm.DB, error) {
-	return gorm.Open(sqlite.Open(option.Dbname + ".db"), &gorm.Config{})
+	return gorm.Open(sqlite.Open(option.Dbname + ".orm"), &gorm.Config{SkipDefaultTransaction: true,})
 }
 
-
-
-type mysqlEngineFactory struct {
-	engineOption
-}
 
 
 func (e mysqlEngineFactory) getName() string {
@@ -73,12 +80,7 @@ func (e mysqlEngineFactory) getName() string {
 func (e mysqlEngineFactory) create(option *engineOption) (*gorm.DB, error) {
 
 	dsn := formatTemplate(mysqlTemplate, option)
-	return gorm.Open(mysql.Open(dsn), &gorm.Config{})
-}
-
-
-type postgresEngineFactory struct {
-	engineOption
+	return gorm.Open(mysql.Open(dsn), &gorm.Config{SkipDefaultTransaction: true,})
 }
 
 
@@ -89,7 +91,7 @@ func (e postgresEngineFactory) getName() string {
 func (e postgresEngineFactory) create(option *engineOption) (*gorm.DB, error) {
 
 	dsn := formatTemplate(postgresTemplate, option)
-	return gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	return gorm.Open(postgres.Open(dsn), &gorm.Config{SkipDefaultTransaction: true,})
 }
 
 
@@ -110,7 +112,7 @@ func getEngineFactory(dial string) (engineFactory, error) {
 }
 
 
-func New(dial string, option *engineOption)  (*gorm.DB, error){
+func New(dial string, option *engineOption)  (*gorm.DB, error) {
 
 	f, err := getEngineFactory(dial)
 	if err != nil {

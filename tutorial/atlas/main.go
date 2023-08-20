@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/go-tutorial/tutorial/atlas/models"
 	"io"
 	"os"
 
 	_ "ariga.io/atlas-go-sdk/recordriver"
 	"ariga.io/atlas-provider-gorm/gormschema"
-	"github.com/go-tutorial/tutorial/db/models"
 )
 
 func main() {

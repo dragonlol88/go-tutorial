@@ -1,11 +1,11 @@
-package main
+package orm
 
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/go-tutorial/tutorial/atlas/models"
 	"testing"
 
-	"github.com/go-tutorial/tutorial/order/models"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -62,7 +62,7 @@ func TestFactoryCreate(t *testing.T) {
 		Port	: 3306,
 		User	: "test",
 		Passwd	: "1234",
-		Dbname	: "test",
+		Dbname	: "test2",
 	}
 	db, _ := New("mysql", &o)
 	db.AutoMigrate(&models.User{})
@@ -84,9 +84,9 @@ func TestFactoryCreate(t *testing.T) {
 
 
 
-	//db.Create(&models.User{Name: "sunny"})
-	//db.Create(&models.Product{Name: r.Name, Price: r.Price, Code: &r.Code})
-	//db.Create(&models.Order{ProductID: 1})
+	//orm.Create(&models.User{Name: "sunny"})
+	//orm.Create(&models.Product{Name: r.Name, Price: r.Price, Code: &r.Code})
+	//orm.Create(&models.Order{ProductID: 1})
 	//
 	var user models.User
 	//
